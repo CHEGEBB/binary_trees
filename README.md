@@ -1,5 +1,5 @@
 # About Binary trees Alx project 
-This project is aimed at equipping alx leraners with the requisite skills  and knowledge of how to tackle binary trees
+This project is aimed at equipping alx students with the requisite skills  and knowledge of how to tackle binary trees
 
 # Author
 This project is a collaborative effort of :
