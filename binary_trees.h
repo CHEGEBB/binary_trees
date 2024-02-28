@@ -44,4 +44,5 @@ size_t binary_tree_height(const binary_tree_t *tree);
 void binary_tree_print(const binary_tree_t *);
 /* Prints a binary tree */
 
+
 #endif /* _BINARY_TREES_H_ */
