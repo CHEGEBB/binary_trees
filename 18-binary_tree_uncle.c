@@ -25,6 +25,7 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node)
 
     /* If the node's parent is the right child, return the left child */
     else
+    /* If the node's parent is the right child, return the left child */
         return (node->parent->parent->left);
 
 }
