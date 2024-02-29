@@ -12,45 +12,40 @@
  * Return: Pointer to the created node, or NULL on failure.
  */
 
-bst_t *bst_insert(bst_t **tree, int value)
+int is_balanced(const binary_tree_t *tree)
 {
-    bst_t *new_node = NULL, *current = NULL;
+    int left_height, right_height;
 
-    if (!tree)
-        return (NULL);
+    if (tree == NULL)
+        return (1);
 
-    if (!*tree)
-    {
-        new_node = binary_tree_node(NULL, value);
-        *tree = new_node;
-        return (new_node);
-    }
+    left_height = height(tree->left);
+    right_height = height(tree->right);
 
-    current = *tree;
-    while (current)
-    {
-        if (value == current->n)
-            return (NULL);
-        if (value < current->n)
-        {
-            if (!current->left)
-            {
-                new_node = binary_tree_node(current, value);
-                current->left = new_node;
-                return (new_node);
-            }
-            current = current->left;
-        }
-        else
-        {
-            if (!current->right)
-            {
-                new_node = binary_tree_node(current, value);
-                current->right = new_node;
-                return (new_node);
-            }
-            current = current->right;
-        }
-    }
-    return (NULL);
+    if (abs(left_height - right_height) <= 1 &&
+        is_balanced(tree->left) &&
+        is_balanced(tree->right))
+        return (1);
+
+    return (0);
+}
+
+/**
+ * binary_tree_is_avl - Checks if a binary tree is a valid AVL Tree.
+ * @tree: A pointer to the root node of the tree to check.
+ *
+ * Return: 1 if tree is a valid AVL Tree, otherwise 0.
+ */
+int binary_tree_is_avl(const binary_tree_t *tree)
+{
+    if (tree == NULL)
+        return (0);
+
+    if (!is_balanced(tree))
+        return (0);
+
+    if (!binary_tree_is_bst(tree))
+        return (0);
+
+    return (1);
 }
