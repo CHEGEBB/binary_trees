@@ -4,7 +4,7 @@
 /**
  * binary_tree_inorder - Goes through a binary tree using in-order traversal.
  * in-order traversal goes through a binary tree using in-order traversal.
- * in in-order traversal, the left node is visited, then the root node, then the right node.
+ * in in-order traversal, the left node is visited, then the root node
  * @tree: Pointer to the root node of the tree to traverse.
  * @func: Pointer to a function to call for each node.
  * The value in the node must be passed as a parameter to this function.
