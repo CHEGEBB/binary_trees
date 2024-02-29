@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * binary_tree_postorder - Goes through a binary tree using post-order traversal.
+ * binary_tree_postorder - Goes through a binary tree
  * post-order traversal goes through a binary tree using post-order traversal.
  * in post-order traversal, the left node is visited, then the right node
  * @tree: Pointer to the root node of the tree to traverse.
@@ -18,7 +18,6 @@ void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int))
 
 	/* Go through the left node */
 	binary_tree_postorder(tree->left, func);
-    
 	/* Go through the right node */
 	binary_tree_postorder(tree->right, func);
 
