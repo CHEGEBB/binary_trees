@@ -3,7 +3,8 @@
 
 size_t depth(const binary_tree_t *tree);
 const binary_tree_t *get_leaf(const binary_tree_t *tree);
-int is_perfect_recursive(const binary_tree_t *tree, size_t leaf_depth, size_t level);
+int is_perfect_recursive(const binary_tree_t *tree,
+size_t leaf_depth, size_t level);
 int binary_tree_is_perfect(const binary_tree_t *tree);
 unsigned char is_leaf(const binary_tree_t *node);
 
@@ -24,13 +25,13 @@ unsigned char is_leaf(const binary_tree_t *node)
 
 /**
  * depth - Returns the depth of a given node in a binary tree.
- * The depth of a node is the number of edges from the node to the tree's root node.
+ * The depth of a node is the number of edges from the node
  * @tree: A pointer to the node to measure the depth of.
  * Return: The depth of the node.
  * Description:
  *   This function calculates the depth of a given node in a binary tree.
- *   The depth of a node is defined as the number of edges from the node to the tree's root node.
- *   If the node is the root node, the depth is 0. If the node is NULL, the depth is also 0.
+ *   The depth of a node is defined as the number of edges
+ *   If the node is the root node, the depth is 0.
  */
 size_t depth(const binary_tree_t *tree)
 {
@@ -71,19 +72,20 @@ int is_perfect_recursive(const binary_tree_t *tree,
 		return (0);
 	}
 
-	return (is_perfect_recursive(tree->left, leaf_depth, level + 1) && is_perfect_recursive(tree->right, leaf_depth, level + 1));
+	return (is_perfect_recursive(tree->left, leaf_depth, level + 1)
+	&& is_perfect_recursive(tree->right, leaf_depth, level + 1));
 }
 
 /**
  * binary_tree_is_perfect - Checks if a binary tree is perfect.
- * A binary tree is considered perfect if all its levels are completely filled.
+ * A binary tree is considered perfect if all its levels
  * @tree: A pointer to the root node of the tree to check.
  * Return: If the tree is NULL or not perfect, 0.
  * If the tree is perfect, it returns 1.
  * Description:
  *   This function determines whether a binary tree is perfect or not.
  *   A binary tree is perfect if all its levels are completely filled.
- *   If the tree is NULL or not perfect, the function returns 0. Otherwise, it returns 1.
+ *   If the tree is NULL or not perfect, the function returns 0.
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
