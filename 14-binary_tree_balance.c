@@ -30,8 +30,8 @@ int binary_tree_balance(const binary_tree_t *tree)
  * Return: If tree is NULL, your function must return 0, else return height.
  * Description:
  * This function measures the height of a binary tree.
- * The height of a binary tree is defined as the length of the longest path from
- * the root node to a leaf node. If the tree is empty (tree is NULL), the height
+ * The height of a binary tree is defined as the length
+ * the root node to a leaf node. If the tree is empty
  * is considered 0. Otherwise, the height is calculated recursively by adding 1
  * to the maximum height of the left and right subtrees.
  */
