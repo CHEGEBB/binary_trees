@@ -17,7 +17,7 @@ size_t binary_tree_size(const binary_tree_t *tree)
 	if (tree == NULL)
 		return (0);
 
-	/* Recursively call binary_tree_size on the left and right children of the tree */
+	/* Recursively call binary_tree_size of the tree */
 	left_size = binary_tree_size(tree->left);
 	right_size = binary_tree_size(tree->right);
 
