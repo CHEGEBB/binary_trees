@@ -1,41 +1,48 @@
 #include "binary_trees.h"
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 /**
- * binary_tree_is_bst - Checks if a binary tree is a valid Binary Search Tree.
- *
- * Description:
- * This function checks whether the given binary tree satisfies the properties
- * of a Binary Search Tree (BST). A BST is a binary tree where the value of
- * every node in the left subtree is less than the value of the node itself,
- * and the value of every node in the right subtree is greater than the value
- * of the node itself.
- *
+ * is_bst_helper - Checks if a binary tree is a valid Binary Search Tree by recursively
+ *examining each node and ensuring that its value falls within the specified
+ *range defined by the minimum and maximum values.
+ * @tree: A pointer to the root node of the tree to check.
+ * @min: The minimum value allowed for nodes in the tree.
+ * @max: The maximum value allowed for nodes in the tree.
+ * Return: 1 if the tree is a valid BST, otherwise 0. If the tree is NULL, returns 1.
+ */
+
+int is_bst_helper(const binary_tree_t *tree, int min, int max)
+{
+	if (tree == NULL)
+		return (1);
+
+	if (tree->n <= min || tree->n >= max)
+		return (0);
+
+	return (is_bst_helper(tree->left, min, tree->n) &&
+			is_bst_helper(tree->right, tree->n, max));
+}
+
+/**
+ * binary_tree_is_bst - Determines whether a binary tree is a valid Binary Search Tree (BST).
+ * @tree: A pointer to the root node of the tree to check.
+ * This function recursively examines each node in the binary tree, ensuring that it satisfies
+ * the properties of a Binary Search Tree (BST), which include the following:
+ *The left subtree of a node contains only nodes with values less than the node’s value.
+ *The right subtree of a node contains only nodes with values greater than the node’s value.
+ *Both left and right subtrees must also be BSTs.
  * @tree: Pointer to the root node of the tree to check.
- *
- * Return:
- * 1 if the tree is a valid BST, 0 otherwise.
+ * @min: The minimum value allowed for nodes in the tree.
+ * @max: The maximum value allowed for nodes in the tree.
+ * Return: 1 if the tree is a valid BST, otherwise 0. If the tree is NULL, returns 1.
  */
 
 int binary_tree_is_bst(const binary_tree_t *tree)
 {
-    /* Base case: an empty tree is considered a valid BST */
-    if (tree == NULL)
-        return (1);
+	if (tree == NULL)
+		return (0);
 
-    /* Check if the left child is less than the current node */
-    if (tree->left != NULL && tree->left->n >= tree->n)
-        return (0);
-
-    /* Check if the right child is greater than or equal to the current node */
-    if (tree->right != NULL && tree->right->n <= tree->n)
-        return (0);
-
-    /* Recursively check the left and right subtrees */
-    if (!binary_tree_is_bst(tree->left) || !binary_tree_is_bst(tree->right))
-        return (0);
-
-    /* If all conditions are met, the tree is a valid BST */
-    return (1);
+	return (is_bst_helper(tree, INT_MIN, INT_MAX));
 }
