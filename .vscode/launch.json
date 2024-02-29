@@ -11,7 +11,7 @@
       "cwd": "c:/Users/brian/Desktop/binary_trees",
       "program": "c:/Users/brian/Desktop/binary_trees/build/Debug/outDebug",
       "MIMode": "gdb",
-      "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",
+      "miDebuggerPath": "gdb",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
