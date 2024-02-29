@@ -14,14 +14,13 @@ void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int))
 {
 	/* Check if the tree or func is NULL */
 	if (tree == NULL || func == NULL)
-		/* If tree or func is NULL, do nothing */
+		
 		return;
 
-	/* Call the function pointer func with the value of the node */
 	func(tree->n);
 
 	/* Go through the left and right nodes */
 	binary_tree_preorder(tree->left, func);
-	/* Go through the right node */
+	
 	binary_tree_preorder(tree->right, func);
 }
