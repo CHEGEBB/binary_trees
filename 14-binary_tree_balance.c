@@ -3,7 +3,7 @@
 
 /**
  * binary_tree_height - Measures the height of a binary tree.
- * The height of a binary tree is the number of edges between the tree's root and its furthest leaf.
+ * The height of a binary tree is the number of edges
  * If tree is NULL, the function must return 0.
  * @tree: A pointer to the root node of the tree to measure the height.
  * Return: If tree is NULL, your function must return 0, else return height.
@@ -23,7 +23,7 @@ size_t binary_tree_height(const binary_tree_t *tree)
 
 /**
  * binary_tree_balance - Measures the balance factor of a binary tree
- * The balance factor of a binary tree is the difference between the height of the left subtree and the right subtree
+ * The balance factor of a binary tree is the difference between the height of the left subtree
  * If tree is NULL, return 0
  * @tree: pointer to the root node of the tree to measure the balance factor
  * Return: balance factor of the tree, or 0 if tree is NULL
