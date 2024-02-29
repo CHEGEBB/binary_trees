@@ -4,7 +4,6 @@
 /**
  * binary_tree_preorder - Goes through a binary tree using pre-order traversal.
  * pre-order traversal goes through a binary tree using pre-order traversal.
- * in pre-order traversal, the node is first visited, then the left and right nodes.
  * @tree: Pointer to the root node of the tree to traverse.
  * @func: Pointer to a function to call for each node.
  * The value in the node must be passed as a parameter to this function.
