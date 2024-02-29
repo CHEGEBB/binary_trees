@@ -17,12 +17,10 @@ unsigned char is_leaf(const binary_tree_t *node);
  * A leaf node is a node that has no children. If the node has no children,
  * it returns 1; otherwise, it returns 0.
  */
- 
 unsigned char is_leaf(const binary_tree_t *node)
 {
 	return ((node->left == NULL && node->right == NULL) ? 1 : 0);
 }
-
 
 /**
  * depth - Returns the depth of a given node in a binary tree.
@@ -34,12 +32,10 @@ unsigned char is_leaf(const binary_tree_t *node)
  * The depth of a node is defined as the number of edges from the node to the tree's root node.
  * If the node is the root node, the depth is 0. If the node is NULL, the depth is also 0.
  */
-
 size_t depth(const binary_tree_t *tree)
 {
 	return (tree->parent != NULL ? 1 + depth(tree->parent) : 0);
 }
-
 
 /**
  * get_leaf - Returns a leaf of a binary tree.
@@ -56,7 +52,6 @@ const binary_tree_t *get_leaf(const binary_tree_t *tree)
 	return (tree->left ? get_leaf(tree->left) : get_leaf(tree->right));
 }
 
-
 /**
  * is_perfect_recursive - Checks if a binary tree is perfect recursively.
  * @tree: A pointer to the root node of the tree to check.
@@ -64,7 +59,6 @@ const binary_tree_t *get_leaf(const binary_tree_t *tree)
  * @level: Level of current node.
  * Return: If the tree is perfect, 1, otherwise 0.
  */
- 
 int is_perfect_recursive(const binary_tree_t *tree,
 		size_t leaf_depth, size_t level)
 {
@@ -85,14 +79,12 @@ int is_perfect_recursive(const binary_tree_t *tree,
  * A binary tree is considered perfect if all its levels are completely filled.
  * @tree: A pointer to the root node of the tree to check.
  * Return: If the tree is NULL or not perfect, 0.
- *If the tree is perfect, it returns 1.
+ * If the tree is perfect, it returns 1.
  * Description:
  * This function determines whether a binary tree is perfect or not.
  * A binary tree is perfect if all its levels are completely filled.
  * If the tree is NULL or not perfect, the function returns 0. Otherwise, it returns 1.
  */
-
- 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
 	if (tree == NULL)
