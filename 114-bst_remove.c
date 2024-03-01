@@ -1,23 +1,7 @@
-#include <stdio.h>
+z#include <stdio.h>
 #include <stdlib.h>
 #include "binary_trees.h"
-
-/**
- * bst_remove - removes a node from a Binary Search Tree
- * @root: pointer to the root node of the tree where you will remove a node
- * @value: value to remove in the tree
- * Return: pointer to the new root node of the tree after removing the desired
- * value
- *
- * Description: This function removes a node with the specified value from
- * a Binary Search Tree (BST) while maintaining its BST property.
- */
-bst_t *bst_remove(bst_t *root, int value)
-{
-    /* Implement BST removal algorithm */
-}
-
-/**
+    
  * inorder_successor - Returns the minimum value of a binary search tree.
  * @root: A pointer to the root node of the BST to search.
  *
