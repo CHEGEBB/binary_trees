@@ -14,11 +14,11 @@
 bst_t *inorder_successor(bst_t *root)
 {
     /* Traverse leftmost nodes to find the minimum value */
-    while (root->left != NULL)
-        root = root->left;
+while (root->left != NULL)
+root = root->left;
 
     /* Return the node with the minimum value */
-    return (root);
+return (root);
 }
 
 /**
@@ -105,7 +105,7 @@ bst_t *bst_remove_recursive(bst_t *root, bst_t *node, int value)
  * Description: This function removes a node from a binary search tree (BST)
  * while maintaining the BST properties. If the node to be deleted has two
  * children, it is replaced with its first in-order successor.
- * 
+ *
  */
 bst_t *bst_remove(bst_t *root, int value)
 {
