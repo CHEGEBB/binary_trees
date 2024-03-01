@@ -34,6 +34,7 @@ bst_t *inorder_successor(bst_t *root)
 bst_t *bst_delete(bst_t *root, bst_t *node)
 {
 	bst_t *parent = node->parent, *successor = NULL;
+
 	if (node->left == NULL)
 	{
 		if (parent != NULL && parent->left == node)
@@ -45,6 +46,7 @@ bst_t *bst_delete(bst_t *root, bst_t *node)
 		free(node);
 		return (parent == NULL ? node->right : root);
 	}
+
 	if (node->right == NULL)
 	{
 		if (parent != NULL && parent->left == node)
@@ -56,6 +58,7 @@ bst_t *bst_delete(bst_t *root, bst_t *node)
 		free(node);
 		return (parent == NULL ? node->left : root);
 	}
+
 	successor = inorder_successor(node->right);
 	node->n = successor->n;
 	return (bst_delete(root, successor));
