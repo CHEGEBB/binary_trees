@@ -3,21 +3,19 @@
 #include <stdio.h>
 
 /**
-* avl_insert - inserts a value in an AVL Tree
-* @tree: double pointer to the root node of the AVL
-			tree for inserting the value
-* @value: value to store in the node to be inserted
-* Return: pointer to the created node, or NULL on failure
-*/
-
+ * height - Calculates the height of a binary tree.
+ * @tree: A pointer to the root node of the binary tree.
+ *
+ * Return: The height of the binary tree.
+ */
 size_t height(const binary_tree_t *tree)
 {
-	if (tree != NULL)
+	if (tree)
 	{
 		size_t l = 0, r = 0;
 
-		l = tree->left ? 1 + binary_tree_height(tree->left) : 1;
-		r = tree->right ? 1 + binary_tree_height(tree->right) : 1;
+		l = tree->left ? 1 + height(tree->left) : 1;
+		r = tree->right ? 1 + height(tree->right) : 1;
 		return ((l > r) ? l : r);
 	}
 	return (0);

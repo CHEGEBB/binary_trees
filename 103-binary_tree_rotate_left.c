@@ -15,21 +15,24 @@
  * Return:
  * Pointer to the new root node of the tree after rotation.
  */
-
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 {
-    binary_tree_t *new_root;
+	binary_tree_t *new_root;
 
-    if (tree == NULL || tree->right == NULL)
-        return (NULL);
+	if (tree == NULL || tree->right == NULL)
+		return (NULL);
 
-    new_root = tree->right;
-    tree->right = new_root->left;
-    if (new_root->left != NULL)
-        new_root->left->parent = tree;
-    new_root->left = tree;
-    new_root->parent = tree->parent;
-    tree->parent = new_root;
+	new_root = tree->right;
+	tree->right = new_root->left;
+	if (new_root->left != NULL)
+		new_root->left->parent = tree;
+	new_root->left = tree;
+	new_root->parent = tree->parent;
+	tree->parent = new_root;
 
+<<<<<<< HEAD
     return (new_root);
+=======
+	return (new_root);
+>>>>>>> 7079632c1fe790c3f3827db6ffc04eb4cdf53635
 }
