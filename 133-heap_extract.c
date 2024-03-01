@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "binary_trees.h"
+
 #define INIT_NODE {0, NULL, NULL, NULL}
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define CONVERT "0123456789ABCDEF"
@@ -10,13 +11,13 @@
 	size = binary_tree_size(*root); \
 	binary = &buffer[49]; \
 	*binary = 0; \
-	}
+}
 
 #define FREE_NODE_BLOC { \
 		res = tmp->n; \
 		free(tmp); \
 		*root = NULL; \
-	}
+}
 
 #define SWAP_HEAD_BLOC { \
 		head = *root; \
@@ -26,12 +27,12 @@
 		*root = tmp; \
 		tmp = perc_down(tmp); \
 		*root = tmp; \
-	}
+}
 
 #define CONVERT_LOOP { \
 		*--binary = CONVERT[size % 2]; \
 		size /= 2; \
-	}
+}
 
 /**
  * swap - Swaps two nodes in a binary tree.
@@ -47,63 +48,63 @@
  */
 bst_t *swap(bst_t *a, bst_t *b)
 {
-    /* Local Declarations */
-    bst_t a_copy = INIT_NODE;
+	/* Local Declarations */
+	bst_t a_copy = INIT_NODE;
 
-    /* Main Execution */
-    a_copy.n = a->n;
-    a_copy.parent = a->parent;
-    a_copy.left = a->left;
-    a_copy.right = a->right;
+	/* Main Execution */
+	a_copy.n = a->n;
+	a_copy.parent = a->parent;
+	a_copy.left = a->left;
+	a_copy.right = a->right;
 
-    /*Update the first node with values of the second node*/
-    a->parent = b;
-    a->left = b->left;
-    a->right = b->right;
+	/*Update the first node with values of the second node*/
+	a->parent = b;
+	a->left = b->left;
+	a->right = b->right;
 
-    /*Update parent pointers of the second node's children*/
-    if (b->left)
-        b->left->parent = a;
-    if (b->right)
-        b->right->parent = a;
+	/*Update parent pointers of the second node's children*/
+	if (b->left)
+		b->left->parent = a;
+	if (b->right)
+		b->right->parent = a;
 
-    /*Update the parent of the second node*/
-    b->parent = a_copy.parent;
+	/*Update the parent of the second node*/
+	b->parent = a_copy.parent;
 
-    /*Update the parent's left or right child pointer to the second node*/
-    if (a_copy.parent)
-    {
-        if (a == a_copy.parent->left)
-            a_copy.parent->left = b;
-        else
-            a_copy.parent->right = b;
-    }
+	/*Update the parent's left or right child pointer to the second node*/
+	if (a_copy.parent)
+	{
+		if (a == a_copy.parent->left)
+			a_copy.parent->left = b;
+		else
+			a_copy.parent->right = b;
+	}
 
-    /*Update the left or right child pointers of the second node*/
-    if (b == a_copy.left)
-    {
-        b->left = a;
-        b->right = a_copy.right;
+	/*Update the left or right child pointers of the second node*/
+	if (b == a_copy.left)
+	{
+		b->left = a;
+		b->right = a_copy.right;
 
-        /*Update the parent pointer of the second node's right child*/
-        if (a_copy.right)
-            a_copy.right->parent = b;
-    }
-    else if (b == a_copy.right)
-    {
-        b->right = a;
-        b->left = a_copy.left;
+		/*Update the parent pointer of the second node's right child*/
+		if (a_copy.right)
+			a_copy.right->parent = b;
+	}
+	else if (b == a_copy.right)
+	{
+		b->right = a;
+		b->left = a_copy.left;
 
-        /*Update the parent pointer of the second node's left child*/
-        if (a_copy.left)
-            a_copy.left->parent = b;
-    }
+		/*Update the parent pointer of the second node's left child*/
+		if (a_copy.left)
+			a_copy.left->parent = b;
+	}
 
-    /*Move to the root of the tree*/
-    while (b->parent)
-        b = b->parent;
+	/*Move to the root of the tree*/
+	while (b->parent)
+		b = b->parent;
 
-    return b;
+	return b;
 }
 
 /**
@@ -117,15 +118,15 @@ bst_t *swap(bst_t *a, bst_t *b)
  */
 size_t binary_tree_size(const binary_tree_t *tree)
 {
-    if (!tree)
-    /* Base case: If the tree is empty, return 0 */
-        return (0);
+	if (!tree)
+	/* Base case: If the tree is empty, return 0 */
+		return (0);
 
-    /*
-     * Recursive case: Count the root node and recursively count nodes
-     * in the left and right subtrees, then sum them up.
-     */
-    return (1 + binary_tree_size(tree->left) + binary_tree_size(tree->right));
+	/*
+	 * Recursive case: Count the root node and recursively count nodes
+	 * in the left and right subtrees, then sum them up.
+	 */
+	return (1 + binary_tree_size(tree->left) + binary_tree_size(tree->right));
 }
 
 
