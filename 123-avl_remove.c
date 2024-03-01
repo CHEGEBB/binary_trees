@@ -60,9 +60,7 @@ int successor(bst_t *node)
 
 	/* Recursively find the minimum value in the left subtree */
 	left = successor(node->left);
-	
-	/* If the minimum value in the left subtree is 0,
-	 * return the value of the current node */
+	/* If the minimum value in the left subtree is */
 	if (left == 0)
 		return (node->n);
 	/* Otherwise, return the minimum value found in the left subtree */
@@ -121,9 +119,7 @@ int remove_type(bst_t *root)
 	/* If the node has two children */
 	else
 	{
-		/* Find the successor of the node */
 		new_value = successor(root->right);
-		/* Replace the value of the node with the value of its successor */
 		root->n = new_value;
 		return (new_value);
 	}
@@ -134,7 +130,6 @@ int remove_type(bst_t *root)
  * @root: root of the tree
  * @value: node with this value to remove
  * Return: the tree changed
- *
  * Description: This function removes a node with a specific value from
  * a binary search tree (BST) while maintaining its BST properties.
  */
