@@ -1,5 +1,5 @@
 #include<stdlib.h>
-#include <stdio.h>
+#include<stdio.h>
 #include "binary_trees.h"
 
 /**
@@ -8,17 +8,16 @@
  * This function recursively calculates the size of the binary tree by counting
  * the number of nodes in both the left and right subtrees, then adding 1 for
  * the current node.
-
  * @return: Size of the binary tree, or 0 if the tree is NULL.
  */
 size_t binary_tree_size(const binary_tree_t *tree)
 {
-	/* Check if the tree is NULL */
-	if (tree == NULL)
-		return (0);
+    /* Check if the tree is NULL */
+    if (tree == NULL)
+        return (0);
 
-	/* Recursively calculate the size of the left and right subtrees */
-	return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
+    /* Recursively calculate the size of the left and right subtrees */
+    return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
 }
 
 /**
@@ -34,19 +33,18 @@ size_t binary_tree_size(const binary_tree_t *tree)
  */
 int tree_is_complete(const binary_tree_t *tree, unsigned int i, unsigned int cnodes)
 {
-	/* Check if the tree is NULL */
-	if (tree == NULL)
-		return (1);
+    /* Check if the tree is NULL */
+    if (tree == NULL)
+        return (1);
 
-	/* Check if the current node index exceeds the total number of nodes */
-	if (i >= cnodes)
-		return (0);
+    /* Check if the current node index exceeds the total number of nodes */
+    if (i >= cnodes)
+        return (0);
 
-	/* Recursively check if the left and right subtrees are complete */
-	return (tree_is_complete(tree->left, 2 * i + 1, cnodes) &&
-		tree_is_complete(tree->right, 2 * i + 2, cnodes));
+    /* Recursively check if the left and right subtrees are complete */
+    return (tree_is_complete(tree->left, 2 * i + 1, cnodes) &&
+            tree_is_complete(tree->right, 2 * i + 2, cnodes));
 }
-
 
 /**
  * binary_tree_is_complete - Checks if a binary tree is complete.
