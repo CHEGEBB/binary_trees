@@ -50,7 +50,5 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 			rear = (rear + 1) % 1024;
 		}
 	}
-
-	/* Free the queue */
 	free(queue);
 }
