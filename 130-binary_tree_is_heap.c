@@ -31,7 +31,8 @@ size_t binary_tree_size(const binary_tree_t *tree)
  * has the correct index based on the total number of nodes.
  * Return: 1 if the binary tree is complete, 0 otherwise.
  */
-int tree_is_complete(const binary_tree_t *tree, unsigned int i, unsigned int cnodes)
+int tree_is_complete(const binary_tree_t *tree,
+unsigned int i, unsigned int cnodes)
 {
 	/* Check if the tree is NULL */
 	if (tree == NULL)
@@ -43,7 +44,7 @@ int tree_is_complete(const binary_tree_t *tree, unsigned int i, unsigned int cno
 
 	/* Recursively check if the left and right subtrees are complete */
 	return (tree_is_complete(tree->left, 2 * i + 1, cnodes) &&
-	        tree_is_complete(tree->right, 2 * i + 2, cnodes));
+tree_is_complete(tree->right, 2 * i + 2, cnodes));
 }
 
 /**
@@ -64,7 +65,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	if (tree == NULL)
 		return (0);
 
-	/* Call the tree_is_complete function to check if the binary tree is complete */
+	/* Call the tree_is_complete function to check binary tree is complete */
 	return (tree_is_complete(tree, 0, total_nodes));
 }
 
