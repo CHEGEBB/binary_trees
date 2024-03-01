@@ -32,8 +32,6 @@ bst_t *swap(bst_t *a, bst_t *b)
 		b->left->parent = a;
 	if (b->right)
 		b->right->parent = a;
-
-	/* Copy the values of b into a */
 	b->parent = a_copy.parent;
 	if (a_copy.parent)
 	{
@@ -42,7 +40,6 @@ bst_t *swap(bst_t *a, bst_t *b)
 		else
 			a_copy.parent->right = b;
 	}
-	/* Update the parent of a's left child */
 	if (b == a_copy.left)
 	{
 		b->left = a;
@@ -50,7 +47,6 @@ bst_t *swap(bst_t *a, bst_t *b)
 		if (a_copy.right)
 			a_copy.right->parent = b;
 	}
-	/* Update the parent of a's right child */
 	else if (b == a_copy.right)
 	{
 		b->right = a;
@@ -65,14 +61,14 @@ bst_t *swap(bst_t *a, bst_t *b)
 
 
 /**
- * convert - Converts a number from base 10 to another base and returns the string representation.
- * This function takes an input number (num) in base 10 and converts it to the specified base,
- * generating a string representation of the converted number. The base can be any integer value
- * greater than 1. Additionally, if the lowercase flag is set to 1, hexadecimal values will be
+ * convert - Converts a number from base 10 to another base
+ * This function takes an input number (num) in base 10
+ * generating a string representation of the converted number.
+ * greater than 1. Additionally, if the lowercase flag is set to 1
  * represented in lowercase letters; otherwise, they will be uppercase.
  * @num: The input number to be converted.
  * @base: The base to convert the number to.
- * @lowercase: A flag indicating whether hexa values should be lowercase (1) or uppercase (0).
+ * @lowercase: A flag indicating whether hexa values
  * Return: A pointer to the string representation of the converted number.
  */
 
@@ -99,8 +95,8 @@ char *convert(unsigned long int num, int base, int lowercase)
 
 /**
  * binary_tree_size - Measures the size of a binary tree.
- * This function calculates the number of descendant nodes (both children and grandchildren)
- * in a binary tree rooted at the given node. It recursively traverses the tree and counts
+ * This function calculates the number of descendant nodes
+ * in a binary tree rooted at the given node.
  * each node encountered.
  * @tree: Pointer to the root node of the binary tree.
  * Return: The number of descendant nodes in the binary tree.
