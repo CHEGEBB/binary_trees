@@ -103,7 +103,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
  * @tree: pointer to the root node of the tree to check
  * Return: 1 if complete, 0 otherwise. If tree is NULL, return 0
  * Description: This function checks if a binary tree is complete.
- * A binary tree is complete if all levels are filled except possibly for the last level,
+ * A binary tree is complete if all levels are filled
  * which is filled from left to right. Additionally, if the last
  * level is not completely filled, its nodes should be as far left as possible.
  */
