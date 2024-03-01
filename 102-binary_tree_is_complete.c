@@ -23,7 +23,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 
 	/* If either the left or right subtree is not complete*/
 	if (!binary_tree_is_complete(tree->left) ||
-    !binary_tree_is_complete(tree->right))
+!binary_tree_is_complete(tree->right))
 		return (0);
 
 	/* If none of the above conditions are met, the tree is complete */
@@ -49,8 +49,7 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	size_t left = binary_tree_height(tree->left);
 	size_t right = binary_tree_height(tree->right);
 
-	/* Return the height of the tree, which is the maximum of the heights
-	 * of the left and right subtrees, plus 1 for the current node */
+	/* Return the height of the tree, which is the maximum of the heights*/
 	if (left >= right)
 		return (1 + left);
 	return (1 + right);
@@ -60,13 +59,11 @@ size_t binary_tree_height(const binary_tree_t *tree)
 /**
  * binary_tree_is_perfect - checks if a binary tree is perfect
  * @tree: pointer to the root node of the tree to check
- *
  * Return: 1 if perfect, 0 otherwise. If tree is NULL, return 0
- *
- * Description: This function checks if a binary tree is perfect. A binary tree
- * is perfect if all its levels are completely filled, except possibly for the
- * last level, which is filled from left to right. Additionally, all leaf nodes
- * are at the same depth. If the tree is empty (NULL), it is considered perfect.
+ * Description: This function checks if a binary tree is perfect.
+ * is perfect if all its levels are completely filled, except possibly
+ * last level, which is filled from left to right. Additionally
+ * are at the same depth. If the tree is empty (NULL)
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
@@ -84,7 +81,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	if (binary_tree_is_leaf(tree))
 		return (1);
 
-	/* If either left or right subtree is missing, the tree is not perfect */
+	/* If either left or right the tree is not perfect */
 	if (l == NULL || r == NULL)
 		return (0);
 
@@ -103,12 +100,10 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 /**
  * binary_tree_is_complete - checks if a binary tree is complete
  * @tree: pointer to the root node of the tree to check
- *
  * Return: 1 if complete, 0 otherwise. If tree is NULL, return 0
- *
- * Description: This function checks if a binary tree is complete. A binary tree
+ * Description: This function checks if a binary tree is complete.
  * is complete if all levels are filled except possibly for the last level,
- * which is filled from left to right. Additionally, if the last level is not
+ * which is filled from left to right. Additionally, if the last
  * completely filled, its nodes should be as far left as possible.
  */
 int binary_tree_is_complete(const binary_tree_t *tree)
