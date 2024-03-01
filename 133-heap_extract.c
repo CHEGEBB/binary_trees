@@ -48,19 +48,14 @@
  */
 bst_t *swap(bst_t *a, bst_t *b)
 {
-	/* Local Declarations */
 	bst_t a_copy = INIT_NODE;
-
-	/* Main Execution */
 	a_copy.n = a->n;
 	a_copy.parent = a->parent;
 	a_copy.left = a->left;
 	a_copy.right = a->right;
-	/*Update the first node with values of the second node*/
 	a->parent = b;
 	a->left = b->left;
 	a->right = b->right;
-	/*Update parent pointers of the second node's children*/
 	if (b->left)
 		b->left->parent = a;
 	if (b->right)
@@ -84,13 +79,9 @@ bst_t *swap(bst_t *a, bst_t *b)
 	{
 		b->right = a;
 		b->left = a_copy.left;
-
-		/*Update the parent pointer of the second node's left child*/
 		if (a_copy.left)
 			a_copy.left->parent = b;
 	}
-
-	/*Move to the root of the tree*/
 	while (b->parent)
 		b = b->parent;
 
