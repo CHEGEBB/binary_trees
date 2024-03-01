@@ -1,17 +1,9 @@
 #include "binary_trees.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 /**
  * sorted_array_to_avl - builds an AVL tree from an array
  * @array: pointer to the first element of the array to be converted
  * @size: number of elements in the array
- *
- * Description:
- * This function builds an AVL tree from an array. The array is assumed to be
- * sorted in ascending order, and the tree is built using the AVL insertion
- * algorithm.
- *
  * Return: pointer to the root node of the created AVL tree, or NULL on failure
  */
 
