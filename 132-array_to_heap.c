@@ -6,11 +6,11 @@
  * array_to_heap - Builds a Max Binary Heap tree from an array.
  * This function constructs a Max Binary Heap tree from the given array of
  * elements. It takes the input array and its size as arguments. If successful,
- * it returns a pointer to the root node of the created Max Binary Heap; otherwise,
+ * it returns a pointer to the root node of the created Max Binary Heap
  * it returns NULL.
  * @array: Pointer to the first element of the input array.
  * @size: The number of elements in the array.
- * Return: Pointer to the root node of the created Max Binary Heap, or NULL on failure.
+ * Return: Pointer to the root node of the created Max Binary Heap
  */
 heap_t *array_to_heap(int *array, size_t size)
 {
