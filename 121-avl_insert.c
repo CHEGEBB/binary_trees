@@ -1,4 +1,6 @@
 #include "binary_trees.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
 * avl_insert - inserts a value in an AVL Tree
