@@ -14,12 +14,12 @@
  */
 size_t binary_tree_size(const binary_tree_t *tree)
 {
-	/* Check if the tree is NULL */
-	if (tree == NULL)
-		return (0);
+    /* Check if the tree is NULL */
+    if (tree == NULL)
+        return (0);
 
-	/* Recursively calculate the size of the left and right subtrees */
-	return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
+    /* Recursively calculate the size of the left and right subtrees */
+    return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
 }
 
 /**
@@ -36,17 +36,17 @@ size_t binary_tree_size(const binary_tree_t *tree)
  */
 int tree_is_complete(const binary_tree_t *tree, unsigned int i, unsigned int cnodes)
 {
-	/* Check if the tree is NULL */
-	if (tree == NULL)
-		return (1);
+    /* Check if the tree is NULL */
+    if (tree == NULL)
+        return (1);
 
-	/* Check if the current node index exceeds the total number of nodes */
-	if (i >= cnodes)
-		return (0);
+    /* Check if the current node index exceeds the total number of nodes */
+    if (i >= cnodes)
+        return (0);
 
-	/* Recursively check if the left and right subtrees are complete */
-	return (tree_is_complete(tree->left, 2 * i + 1, cnodes) &&
-		tree_is_complete(tree->right, 2 * i + 2, cnodes));
+    /* Recursively check if the left and right subtrees are complete */
+    return (tree_is_complete(tree->left, 2 * i + 1, cnodes) &&
+            tree_is_complete(tree->right, 2 * i + 2, cnodes));
 }
 
 /**
