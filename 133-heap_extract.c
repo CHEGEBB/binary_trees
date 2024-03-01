@@ -194,22 +194,20 @@ int heap_extract(heap_t **root)
 	if (!root || !*root)
 		return (0); /* Return 0 if the root pointer is NULL */
 
-	/* Set up necessary variables and data structures */
 	SETUP_NODE_BLOC;
 
-	/* If there is only one node in the heap */
-	if (size == 1)
+	
+	if (size == 1)/* If there is only one node in the heap */
 	{
 		FREE_NODE_BLOC; /* Free the root node */
 		return (res);   /* Return the value stored in the root node */
 	}
 
-	/* Convert the size of the heap to binary */
-	do {
+	
+	do { /* Convert the size of the heap to binary */
 		CONVERT_LOOP;
 	} while (size);
 
-	/* Traverse the heap to find the last level-order node */
 	for (i = 1; i < strlen(binary); i++)
 	{
 		c = binary[i];
@@ -232,8 +230,7 @@ int heap_extract(heap_t **root)
 			tmp = tmp->left;
 	}
 
-	/* Swap the last level-order node with the root node */
-	SWAP_HEAD_BLOC;
+	SWAP_HEAD_BLOC;/* Swap the last level-order node with the root node */
 
 	return (res); /* Return the value stored in the root node */
 }
