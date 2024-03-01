@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "binary_trees.h"
-
 #define INIT_NODE {0, NULL, NULL, NULL}
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define CONVERT "0123456789ABCDEF"
@@ -11,13 +10,13 @@
 	size = binary_tree_size(*root); \
 	binary = &buffer[49]; \
 	*binary = 0; \
-}
+	}
 
 #define FREE_NODE_BLOC { \
 		res = tmp->n; \
 		free(tmp); \
 		*root = NULL; \
-}
+	}
 
 #define SWAP_HEAD_BLOC { \
 		head = *root; \
@@ -27,12 +26,12 @@
 		*root = tmp; \
 		tmp = perc_down(tmp); \
 		*root = tmp; \
-}
+	}
 
 #define CONVERT_LOOP { \
 		*--binary = CONVERT[size % 2]; \
 		size /= 2; \
-}
+	}
 
 /**
  * swap - Swaps two nodes in a binary tree.
@@ -48,44 +47,63 @@
  */
 bst_t *swap(bst_t *a, bst_t *b)
 {
-	bst_t a_copy = INIT_NODE;
-	a_copy.n = a->n;
-	a_copy.parent = a->parent;
-	a_copy.left = a->left;
-	a_copy.right = a->right;
-	a->parent = b;
-	a->left = b->left;
-	a->right = b->right;
-	if (b->left)
-		b->left->parent = a;
-	if (b->right)
-		b->right->parent = a;
-	b->parent = a_copy.parent;
-	if (a_copy.parent)
-	{
-		if (a == a_copy.parent->left)
-			a_copy.parent->left = b;
-		else
-			a_copy.parent->right = b;
-	}
-	if (b == a_copy.left)
-	{
-		b->left = a;
-		b->right = a_copy.right;
-		if (a_copy.right)
-			a_copy.right->parent = b;
-	}
-	else if (b == a_copy.right)
-	{
-		b->right = a;
-		b->left = a_copy.left;
-		if (a_copy.left)
-			a_copy.left->parent = b;
-	}
-	while (b->parent)
-		b = b->parent;
+    /* Local Declarations */
+    bst_t a_copy = INIT_NODE;
 
-	return b;
+    /* Main Execution */
+    a_copy.n = a->n;
+    a_copy.parent = a->parent;
+    a_copy.left = a->left;
+    a_copy.right = a->right;
+
+    /*Update the first node with values of the second node*/
+    a->parent = b;
+    a->left = b->left;
+    a->right = b->right;
+
+    /*Update parent pointers of the second node's children*/
+    if (b->left)
+        b->left->parent = a;
+    if (b->right)
+        b->right->parent = a;
+
+    /*Update the parent of the second node*/
+    b->parent = a_copy.parent;
+
+    /*Update the parent's left or right child pointer to the second node*/
+    if (a_copy.parent)
+    {
+        if (a == a_copy.parent->left)
+            a_copy.parent->left = b;
+        else
+            a_copy.parent->right = b;
+    }
+
+    /*Update the left or right child pointers of the second node*/
+    if (b == a_copy.left)
+    {
+        b->left = a;
+        b->right = a_copy.right;
+
+        /*Update the parent pointer of the second node's right child*/
+        if (a_copy.right)
+            a_copy.right->parent = b;
+    }
+    else if (b == a_copy.right)
+    {
+        b->right = a;
+        b->left = a_copy.left;
+
+        /*Update the parent pointer of the second node's left child*/
+        if (a_copy.left)
+            a_copy.left->parent = b;
+    }
+
+    /*Move to the root of the tree*/
+    while (b->parent)
+        b = b->parent;
+
+    return b;
 }
 
 /**
@@ -99,15 +117,15 @@ bst_t *swap(bst_t *a, bst_t *b)
  */
 size_t binary_tree_size(const binary_tree_t *tree)
 {
-	if (!tree)
-	/* Base case: If the tree is empty, return 0 */
-		return (0);
+    if (!tree)
+    /* Base case: If the tree is empty, return 0 */
+        return (0);
 
-	/*
-	 * Recursive case: Count the root node and recursively count nodes
-	 * in the left and right subtrees, then sum them up.
-	 */
-	return (1 + binary_tree_size(tree->left) + binary_tree_size(tree->right));
+    /*
+     * Recursive case: Count the root node and recursively count nodes
+     * in the left and right subtrees, then sum them up.
+     */
+    return (1 + binary_tree_size(tree->left) + binary_tree_size(tree->right));
 }
 
 
@@ -152,16 +170,20 @@ heap_t *perc_down(heap_t *node)
 	if (!node)
 		return (NULL); /* Base case: If the node is NULL, return NULL */
 
+	/* Determine the maximum value among the node and its children */
 	max = node->n;
 	if (node->left)
 		max = MAX(node->left->n, max);
 	if (node->right)
 		max = MAX(node->right->n, max);
 
+	/* Find the child node with the maximum value */
 	if (node->left && max == node->left->n)
 		next = node->left;
 	else if (node->right && max == node->right->n)
 		next = node->right;
+
+	/* If the largest child node is different from the current node, swap them */
 	if (next != node)
 	{
 		swap(node, next);
@@ -188,20 +210,24 @@ int heap_extract(heap_t **root)
 	heap_t *tmp, *head;
 
 	if (!root || !*root)
-		return (0);
+		return (0); /* Return 0 if the root pointer is NULL */
 
+	/* Set up necessary variables and data structures */
 	SETUP_NODE_BLOC;
 
-	
+	/* If there is only one node in the heap */
 	if (size == 1)
 	{
-		FREE_NODE_BLOC;
-		return (res);
+		FREE_NODE_BLOC; /* Free the root node */
+		return (res);   /* Return the value stored in the root node */
 	}
+
+	/* Convert the size of the heap to binary */
 	do {
 		CONVERT_LOOP;
 	} while (size);
 
+	/* Traverse the heap to find the last level-order node */
 	for (i = 1; i < strlen(binary); i++)
 	{
 		c = binary[i];
@@ -224,7 +250,8 @@ int heap_extract(heap_t **root)
 			tmp = tmp->left;
 	}
 
+	/* Swap the last level-order node with the root node */
 	SWAP_HEAD_BLOC;
 
-	return (res);
+	return (res); /* Return the value stored in the root node */
 }
