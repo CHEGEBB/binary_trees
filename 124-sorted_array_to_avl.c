@@ -10,9 +10,9 @@
  * @last: End index of the current subtree in the array.
  *
  * Description:
- * This function recursively constructs an AVL tree from a sorted array. It starts
- * by finding the middle element of the array and creates a node for it. Then, it
- * recursively builds the left and right subtrees using the elements to the left and
+ * This function recursively constructs an AVL tree from a sorted
+ * by finding the middle element of the array and creates a node
+ * recursively builds the left and right subtrees using the elements
  * right of the middle element, respectively.
  *
  * Return:
