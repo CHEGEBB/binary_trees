@@ -12,18 +12,22 @@
  * subtree minus the height of its right subtree.
  * A balanced tree has a balance factor of -1, 0, or 1.
  */
-void bal(avl_t **tree) {
-    if (tree == NULL || *tree == NULL)
-        return;
-    
-    int bval = binary_tree_balance((const binary_tree_t *)*tree);
+void bal(avl_t **tree)
+{
+	int bval;
 
-    if (bval > 1)
-        *tree = binary_tree_rotate_right((binary_tree_t *)*tree);
-    else if (bval < -1)
-        *tree = binary_tree_rotate_left((binary_tree_t *)*tree);
+	if (tree == NULL || *tree == NULL)
+		return;
+	if ((*tree)->left == NULL && (*tree)->right == NULL)
+		return;
+	bal(&(*tree)->left);
+	bal(&(*tree)->right);
+	bval = binary_tree_balance((const binary_tree_t *)*tree);
+	if (bval > 1)
+		*tree = binary_tree_rotate_right((binary_tree_t *)*tree);
+	else if (bval < -1)
+		*tree = binary_tree_rotate_left((binary_tree_t *)*tree);
 }
-
 
 /**
  * successor - Finds the minimum value in the right subtree
