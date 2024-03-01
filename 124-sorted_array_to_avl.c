@@ -20,21 +20,21 @@
  * - Pointer to the root node of the constructed AVL tree.
  * - NULL if the start index is greater than the end index.
  */
-avl_t *aux_sort(avl_t *parent, int *array, int start_index, int end_index)
+avl_t *aux_sort(avl_t *parent, int *array, int begin, int last)
 {
 	avl_t *root;
 	binary_tree_t *aux;
 	int mid = 0;
 
-	if (start_index <= end_index)
+	if (begin <= last)
 	{
-		mid = (start_index + end_index) / 2;
+		mid = (begin + last) / 2;
 		aux = binary_tree_node((binary_tree_t *)parent, array[mid]);
 		if (aux == NULL)
 			return (NULL);
 		root = (avl_t *)aux;
-		root->left = aux_sort(root, array, start_index, mid - 1);
-		root->right = aux_sort(root, array, mid + 1, end_index);
+		root->left = aux_sort(root, array, begin, mid - 1);
+		root->right = aux_sort(root, array, mid + 1, last);
 		return (root);
 	}
 	return (NULL);
