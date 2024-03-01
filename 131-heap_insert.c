@@ -26,7 +26,6 @@ bst_t *swap(bst_t *a, bst_t *b)
 	a->parent = b;
 	a->left = b->left;
 	a->right = b->right;
-
 	/* Update the parent of b's left child */
 	if (b->left)
 		b->left->parent = a;
@@ -58,8 +57,6 @@ bst_t *swap(bst_t *a, bst_t *b)
 		b = b->parent;
 	return (b);
 }
-
-
 /**
  * convert - Converts a number from base 10 to another base 
  * This function takes an input number (num) in base 10 
@@ -71,7 +68,6 @@ bst_t *swap(bst_t *a, bst_t *b)
  * @lowercase: A flag indicating whether hexa values
  * Return: A pointer to the string representation of the converted number.
  */
-
 char *convert(unsigned long int num, int base, int lowercase)
 {
 	static char *rep;
