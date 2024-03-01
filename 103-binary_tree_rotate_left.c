@@ -1,3 +1,4 @@
+#include "binary_trees.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -29,5 +30,5 @@ binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 	new_root->parent = tree->parent;
 	tree->parent = new_root;
 
-	return (new_root);
+    return (new_root);
 }
