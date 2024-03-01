@@ -16,17 +16,17 @@
  */
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
-    avl_t *tree = NULL;
-    size_t i;
+	avl_t *tree = NULL;
+	size_t i;
 
-    /* Check if the array is NULL or empty */
-    if (array == NULL || size == 0)
-        return (NULL);
+	/* Check if the array is NULL or empty */
+	if (array == NULL || size == 0)
+		return (NULL);
 
-    /* Insert each element of the array into the AVL tree */
-    for (i = 0; i < size; i++)
-        avl_insert(&tree, array[i]);
+	/* Insert each element of the array into the AVL tree */
+	for (i = 0; i < size; i++)
+		avl_insert(&tree, array[i]);
 
-    /* Return the root of the AVL tree */
-    return (tree);
+	/* Return the root of the AVL tree */
+	return (tree);
 }
