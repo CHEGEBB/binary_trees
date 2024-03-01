@@ -152,20 +152,16 @@ heap_t *perc_down(heap_t *node)
 	if (!node)
 		return (NULL); /* Base case: If the node is NULL, return NULL */
 
-	/* Determine the maximum value among the node and its children */
 	max = node->n;
 	if (node->left)
 		max = MAX(node->left->n, max);
 	if (node->right)
 		max = MAX(node->right->n, max);
 
-	/* Find the child node with the maximum value */
 	if (node->left && max == node->left->n)
 		next = node->left;
 	else if (node->right && max == node->right->n)
 		next = node->right;
-
-	/* If the largest child node is different from the current node, swap them */
 	if (next != node)
 	{
 		swap(node, next);
@@ -192,19 +188,17 @@ int heap_extract(heap_t **root)
 	heap_t *tmp, *head;
 
 	if (!root || !*root)
-		return (0); /* Return 0 if the root pointer is NULL */
+		return (0);
 
 	SETUP_NODE_BLOC;
 
 	
-	if (size == 1)/* If there is only one node in the heap */
+	if (size == 1)
 	{
-		FREE_NODE_BLOC; /* Free the root node */
-		return (res);   /* Return the value stored in the root node */
+		FREE_NODE_BLOC;
+		return (res);
 	}
-
-	
-	do { /* Convert the size of the heap to binary */
+	do {
 		CONVERT_LOOP;
 	} while (size);
 
@@ -230,7 +224,7 @@ int heap_extract(heap_t **root)
 			tmp = tmp->left;
 	}
 
-	SWAP_HEAD_BLOC;/* Swap the last level-order node with the root node */
+	SWAP_HEAD_BLOC;
 
-	return (res); /* Return the value stored in the root node */
+	return (res);
 }
