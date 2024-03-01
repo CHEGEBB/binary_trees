@@ -12,8 +12,8 @@ int binary_tree_is_avl(const binary_tree_t *tree);
  * @tree: A pointer to the root node of the binary tree.
  *
  * Description:
- * This function computes the height of a given binary tree. The height is defined
- * as the length of the longest path from the root node to a leaf node. If the tree
+ * This function computes the height of a given binary tree.
+ * as the length of the longest path from the root node to a leaf node
  * is empty (NULL), the function returns 0.
  *
  * Return: The height of the binary tree.
@@ -37,9 +37,9 @@ size_t height(const binary_tree_t *tree)
  * @tree: A pointer to the root node of the binary tree.
  *
  * Description:
- * This function determines whether a given binary tree is a valid AVL Tree or not.
- * An AVL Tree is a Binary Search Tree (BST) where the height difference between
- * the left and right subtrees of any node is not more than one. The left and right
+ * This function determines whether a given binary tree is a valid AVL
+ * An AVL Tree is a Binary Search Tree (BST) where the height difference
+ * the left and right subtrees of any node is not more than one.
  * subtrees must also be AVL trees.
  *
  * Return: Returns 1 if the binary tree is a valid AVL Tree, and 0 otherwise.
