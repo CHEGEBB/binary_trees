@@ -57,18 +57,16 @@ int successor(bst_t *node)
 	/* If the node is NULL, return 0 */
 	if (node == NULL)
 		return (0);
-	else
-	{
-		/* Recursively find the minimum value in the left subtree */
-		left = successor(node->left);
-		
-		/* If the minimum value in the left subtree is 0,
-		 * return the value of the current node */
-		if (left == 0)
-			return (node->n);
-		/* Otherwise, return the minimum value found in the left subtree */
-		return (left);
-	}
+
+	/* Recursively find the minimum value in the left subtree */
+	left = successor(node->left);
+	
+	/* If the minimum value in the left subtree is 0,
+	 * return the value of the current node */
+	if (left == 0)
+		return (node->n);
+	/* Otherwise, return the minimum value found in the left subtree */
+	return (left);
 }
 
 /**
