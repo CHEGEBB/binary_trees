@@ -56,22 +56,16 @@ bst_t *swap(bst_t *a, bst_t *b)
 	a_copy.parent = a->parent;
 	a_copy.left = a->left;
 	a_copy.right = a->right;
-
 	/*Update the first node with values of the second node*/
 	a->parent = b;
 	a->left = b->left;
 	a->right = b->right;
-
 	/*Update parent pointers of the second node's children*/
 	if (b->left)
 		b->left->parent = a;
 	if (b->right)
 		b->right->parent = a;
-
-	/*Update the parent of the second node*/
 	b->parent = a_copy.parent;
-
-	/*Update the parent's left or right child pointer to the second node*/
 	if (a_copy.parent)
 	{
 		if (a == a_copy.parent->left)
@@ -79,14 +73,10 @@ bst_t *swap(bst_t *a, bst_t *b)
 		else
 			a_copy.parent->right = b;
 	}
-
-	/*Update the left or right child pointers of the second node*/
 	if (b == a_copy.left)
 	{
 		b->left = a;
 		b->right = a_copy.right;
-
-		/*Update the parent pointer of the second node's right child*/
 		if (a_copy.right)
 			a_copy.right->parent = b;
 	}
