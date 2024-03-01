@@ -115,8 +115,8 @@ size_t binary_tree_size(const binary_tree_t *tree)
  * @root: Double pointer to the root of the Max Heap.
  * @node: Pointer to the node to be inserted.
  */
- 
- 
+
+
 void insert(heap_t **root, heap_t *node)
 {
 	/* Create a binary string representation of the heap size */
@@ -165,8 +165,8 @@ void insert(heap_t **root, heap_t *node)
  * @root: Double pointer to the root of the Max Binary Heap.
  * @value: The value to be inserted into the heap.
  * Return: Pointer to the created node, or NULL on failure.
- */ 
- 
+ */
+
 heap_t *heap_insert(heap_t **root, int value)
 {
 	heap_t *ht = NULL, *ret;
