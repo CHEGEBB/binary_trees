@@ -6,7 +6,7 @@
  * binary_tree_size - Measures the size of a binary tree recursively.
  * @tree: Pointer to the root node of the binary tree.
  *
- * Description: This function recursively calculates the size of the binary
+ * Description: This function recursively calculates the size of the binary tree
  * by counting the number of nodes in both the left and right subtrees,
  * then adding 1 for the current node.
  *
@@ -54,7 +54,7 @@ int tree_is_complete(const binary_tree_t *tree, unsigned int i, unsigned int cno
  * @tree: Pointer to the root node of the binary tree.
  *
  * Description: This function calls the tree_is_complete function to check if the
- * binary tree is complete by traversing the tree in an inorder manner
+ * binary tree is complete by traversing the tree in an inorder manner and verifying
  * if each node has the correct index based on the total number of nodes.
  *
  * Return: 1 if the binary tree is complete, 0 otherwise.
@@ -76,7 +76,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
  * check_parent - Checks if a node's parent has a greater value than its children.
  * @tree: Pointer to the node.
  *
- * Description: This function recursively checks if a node's parent has a greater
+ * Description: This function recursively checks if a node's parent has a greater value
  * than its children in a binary tree.
  *
  * Return: 1 if the parent has a greater value, 0 otherwise.
