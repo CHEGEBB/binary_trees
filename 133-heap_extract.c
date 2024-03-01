@@ -2,6 +2,38 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#define INIT_NODE {0, NULL, NULL, NULL}
+
+#define CONVERT "0123456789ABCDEF"
+
+#define SETUP_NODE_BLOC { \
+	tmp = *root; \
+	size = binary_tree_size(*root); \
+	binary = &buffer[49]; \
+	*binary = 0; \
+	}
+
+#define FREE_NODE_BLOC { \
+		res = tmp->n; \
+		free(tmp); \
+		*root = NULL; \
+	}
+
+#define SWAP_HEAD_BLOC { \
+		head = *root; \
+		head = swap_head(head, tmp); \
+		res = head->n; \
+		free(head); \
+		*root = tmp; \
+		tmp = perc_down(tmp); \
+		*root = tmp; \
+	}
+
+#define CONVERT_LOOP { \
+		*--binary = CONVERT[size % 2]; \
+		size /= 2; \
+	}
+
 /**
  * binary_tree_height - Measures the height of a binary tree.
  * @tree: Pointer to the root node of the binary tree.
