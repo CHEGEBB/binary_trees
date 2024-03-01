@@ -6,7 +6,7 @@
 /**
  * binary_trees_ancestor - Finds the lowest common ancestor
  *                         The lowest common ancestor is the node
- *                         If either node is the root, the function returns the root.
+ *                         If either node is the root, the function
  *                         If either node is NULL, the function returns NULL.
  *
  * @first: A pointer to the first node.
