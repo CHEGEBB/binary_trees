@@ -1,51 +1,101 @@
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 #include "binary_trees.h"
 
 /**
  * binary_tree_is_complete - checks if a binary tree is complete
  * @tree: pointer to the root node of the tree to check
- * Return: 1 if complete, 0 otherwise. If tree is NULL, return 0
- * Description: This function checks if a binary tree is complete.
- * A binary tree is complete if all levels are filled
- * which is filled from left to right. Additionally, if the last
- * level is not completely filled, its nodes should be as far left as possible.
+ * Return: 1 if complete, otherwise 0
  */
+
+
+int binary_tree_is_leaf(const binary_tree_t *node)
+{
+	if (node != NULL && node->left == NULL && node->right == NULL)
+		return (1);
+	return (0);
+}
+
+
+/**
+ * binary_tree_height - measures the height of a binary tree
+ * @tree: pointer to the root node of the tree to measure the height of
+ *
+ * Return: the height of the tree. If tree is NULL, return 0
+ */
+ 
+ 
+size_t binary_tree_height(const binary_tree_t *tree)
+{
+	size_t left, right;
+
+	if (tree == NULL)
+		return (0);
+	left = binary_tree_height(tree->left);
+	right = binary_tree_height(tree->right);
+	if (left >= right)
+		return (1 + left);
+	return (1 + right);
+}
+
+
+/**
+ * binary_tree_is_perfect - checks if a binary tree is perfect
+ * @tree: pointer to the root node of the tree to check
+ *
+ * Return: 1 if perfect, 0 otherwise. If tree is NULL, return 0
+ */
+ 
+ 
+int binary_tree_is_perfect(const binary_tree_t *tree)
+{
+	binary_tree_t *l, *r;
+
+	if (tree == NULL)
+		return (1);
+	l = tree->left;
+	r = tree->right;
+	if (binary_tree_is_leaf(tree))
+		return (1);
+	if (l == NULL || r == NULL)
+		return (0);
+	if (binary_tree_height(l) == binary_tree_height(r))
+	{
+		if (binary_tree_is_perfect(l) && binary_tree_is_perfect(r))
+			return (1);
+	}
+	return (0);
+}
+
+
+/**
+ * binary_tree_is_complete -  checks if a binary tree is complete
+ * @tree: pointer to the root node of the tree to check
+ *
+ * Return: 1 if complete, 0 otherwise. If tree is NULL, return 0
+ */
+ 
+ 
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
 	size_t l_height, r_height;
 	binary_tree_t *l, *r;
 
-	/* If the tree is empty, it cannot be complete */
 	if (tree == NULL)
 		return (0);
-
-	/* If the tree has only one node, it is complete */
 	if (binary_tree_is_leaf(tree))
 		return (1);
-
-	/* Store the left and right subtrees */
 	l = tree->left;
 	r = tree->right;
-
-	/* Calculate the heights of the left and right subtrees */
 	l_height = binary_tree_height(l);
 	r_height = binary_tree_height(r);
-
-	/* If the heights of the left and right subtrees are equal*/
 	if (l_height == r_height)
 	{
 		if (binary_tree_is_perfect(l) && binary_tree_is_complete(r))
 			return (1);
 	}
-	/* If the height of the left subtree is one greater than the right subtree*/
 	else if (l_height == r_height + 1)
 	{
 		if (binary_tree_is_complete(l) && binary_tree_is_perfect(r))
 			return (1);
 	}
-
-	/* If none of the conditions are met, the tree is not complete */
 	return (0);
 }
