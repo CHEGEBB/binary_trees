@@ -93,7 +93,6 @@ int remove_type(bst_t *root)
 		free(root);
 		return (0);
 	}
-	/* If the node has exactly one child */
 	else if ((!root->left && root->right) || (!root->right && root->left))
 	{
 		if (!root->left)
