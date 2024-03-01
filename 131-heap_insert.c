@@ -170,8 +170,8 @@ void insert(heap_t **root, heap_t *node)
  * Return: Pointer to the created node, or NULL on failure.
  */
 
- 
- 
+
+
 heap_t *heap_insert(heap_t **root, int value)
 {
 	heap_t *ht = NULL, *ret;
