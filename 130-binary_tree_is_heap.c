@@ -6,7 +6,7 @@
  * binary_tree_size - Measures the size of a binary tree recursively.
  * @tree: Pointer to the root node of the binary tree.
  *
- * Description: This function recursively calculates the size of the binary tree
+ * Description: This function recursively calculates
  * by counting the number of nodes in both the left and right subtrees,
  * then adding 1 for the current node.
  *
@@ -34,7 +34,8 @@ size_t binary_tree_size(const binary_tree_t *tree)
  *
  * Return: 1 if the binary tree is complete, 0 otherwise.
  */
-int tree_is_complete(const binary_tree_t *tree, unsigned int i, unsigned int cnodes)
+int tree_is_complete(const binary_tree_t *tree,
+unsigned int i, unsigned int cnodes)
 {
 	/* Check if the tree is NULL */
 	if (tree == NULL)
@@ -53,8 +54,8 @@ int tree_is_complete(const binary_tree_t *tree, unsigned int i, unsigned int cno
  * binary_tree_is_complete - Checks if a binary tree is complete.
  * @tree: Pointer to the root node of the binary tree.
  *
- * Description: This function calls the tree_is_complete function to check if the
- * binary tree is complete by traversing the tree in an inorder manner and verifying
+ * Description: This function calls the tree_is_complete function
+ * binary tree is complete by traversing the tree in an inorder manner
  * if each node has the correct index based on the total number of nodes.
  *
  * Return: 1 if the binary tree is complete, 0 otherwise.
@@ -73,11 +74,11 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 }
 
 /**
- * check_parent - Checks if a node's parent has a greater value than its children.
+ * check_parent - Checks if a node's parent has a greater value
  * @tree: Pointer to the node.
  *
- * Description: This function recursively checks if a node's parent has a greater value
- * than its children in a binary tree.
+ * Description: This function recursively checks if a node's parent
+ * than its children in a binary tree
  *
  * Return: 1 if the parent has a greater value, 0 otherwise.
  */
@@ -99,8 +100,8 @@ int check_parent(const binary_tree_t *tree)
  * binary_tree_is_heap - Checks if a binary tree is a Max Binary Heap.
  * @tree: Pointer to the root node of the binary tree.
  *
- * Description: This function checks if the input binary tree is a Max Binary Heap by
- * verifying if it is complete and if each node's parent has a greater value
+ * Description: This function checks if the input binary tree
+ * verifying if it is complete and if each node's parent
  * than its children.
  *
  * Return: 1 if the binary tree is a Max Binary Heap, 0 otherwise.
