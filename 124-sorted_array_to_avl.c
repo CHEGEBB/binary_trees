@@ -1,6 +1,4 @@
 #include "binary_trees.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 /**
  * create_avl_tree - Recursively creates an AVL tree from a sorted array.
@@ -40,7 +38,13 @@ avl_t *create_avl_tree(avl_t *parent, int *array, int start, int end)
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
     if (array == NULL || size == 0)
+<<<<<<< HEAD
         return NULL;
 
     return create_avl_tree(NULL, array, 0, (int)size - 1);
+=======
+        return (NULL);
+
+    return (aux_sort(NULL, array, 0, (int)(size) - 1));
+>>>>>>> 06bedac276801c21e1290a9a10fd70f9fec923e9
 }
