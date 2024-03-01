@@ -21,9 +21,6 @@ bst_t *array_to_bst(int *array, size_t size)
 		return (NULL);
 
 	for (i = 0; i < size; i++)
-	{
-		if (!bst_insert(&tree, array[i]))
-			return (NULL);
-	}
-	return (tree);
+		bst_insert(&tree, array[i]);
+	return (NULL);return (tree);
 }
