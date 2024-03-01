@@ -1,5 +1,7 @@
 #include "binary_trees.h"
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 /**
  * binary_trees_ancestor - Finds the lowest common ancestor of two nodes in a binary tree.
@@ -14,44 +16,31 @@
  */
 
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second)
-
 {
-    binary_tree_t *ancestor = NULL;
+    binary_tree_t *mom, *pop; /* Pointers to store parents of the nodes */
 
-    /* If either node is NULL, the function returns NULL. */
-    if (first == NULL || second == NULL)
+    /* If either node is NULL, return NULL */
+    if (!first || !second)
+    {
         return (NULL);
-
-    /* If either node is the root, the function returns the root. */
+    }
+    /* If both nodes are the same, return either node */
     if (first == second)
+    {
         return ((binary_tree_t *)first);
+    }
 
-    /* If either node is the root, the function returns the root. */
-    if (first->parent == second)
-        return ((binary_tree_t *)second);
+    /* Get parents of the nodes */
+    mom = first->parent, pop = second->parent;
 
-    /* If either node is the root, the function returns the root. */
-    if (second->parent == first)
-        return ((binary_tree_t *)first);
-
-    /* If either node is the root, the function returns the root. */
-    if (first->parent == second->parent)
-        return ((binary_tree_t *)first->parent);
-
-    if (first->parent == second)
-        return ((binary_tree_t *)second);
-
-    if (second->parent == first)
-        return ((binary_tree_t *)first);
-
-    if (first->parent != NULL)
-        ancestor = binary_trees_ancestor(first->parent, second);
-
-    if (ancestor != NULL)
-        return (ancestor);
-
-    if (second->parent != NULL)
-        ancestor = binary_trees_ancestor(first, second->parent);
-
-    return (ancestor);
+    /* Recursively find the lowest common ancestor */
+    if (first == pop || !mom || (!mom->parent && pop))
+    {
+        return (binary_trees_ancestor(first, pop));
+    }
+    else if (mom == second || !pop || (!pop->parent && mom))
+    {
+        return (binary_trees_ancestor(mom, second));
+    }
+    return (binary_trees_ancestor(mom, pop));
 }
