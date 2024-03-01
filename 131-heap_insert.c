@@ -58,8 +58,8 @@ bst_t *swap(bst_t *a, bst_t *b)
 	return (b);
 }
 /**
-* convert - Converts a number from base 10 to another base 
-* This function takes an input number (num) in base 10 
+* convert - Converts a number from base 10 to another base
+* This function takes an input number (num) in base 10
 * generating a string representation of the converted number.
 * greater than 1. Additionally, if the lowercase flag is set to 1
 * represented in lowercase letters; otherwise, they will be uppercase.
@@ -92,7 +92,7 @@ char *convert(unsigned long int num, int base, int lowercase)
 /**
  * binary_tree_size - Measures the size of a binary tree.
  * This function calculates the number of descendant nodes
- * in a binary tree rooted at the given node. 
+ * in a binary tree rooted at the given node.
  * each node encountered.
  * @tree: Pointer to the root node of the binary tree.
  * Return: The number of descendant nodes in the binary tree.
@@ -115,7 +115,6 @@ size_t binary_tree_size(const binary_tree_t *tree)
  * @root: Double pointer to the root of the Max Heap.
  * @node: Pointer to the node to be inserted.
  */
-
  
  
 void insert(heap_t **root, heap_t *node)
@@ -166,9 +165,7 @@ void insert(heap_t **root, heap_t *node)
  * @root: Double pointer to the root of the Max Binary Heap.
  * @value: The value to be inserted into the heap.
  * Return: Pointer to the created node, or NULL on failure.
- */
-
- 
+ */ 
  
 heap_t *heap_insert(heap_t **root, int value)
 {
