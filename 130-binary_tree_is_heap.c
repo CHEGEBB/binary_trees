@@ -64,7 +64,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	if (tree == NULL)
 		return (0);
 
-	/* Call the tree_is_complete function to check if the binary tree is complete */
+	/* Call the tree_is_complete function to check binary tree is complete */
 	return (tree_is_complete(tree, 0, total_nodes));
 }
 
