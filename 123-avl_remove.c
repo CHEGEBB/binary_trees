@@ -116,7 +116,6 @@ int remove_type(bst_t *root)
 		free(root);
 		return (0);
 	}
-	/* If the node has two children */
 	else
 	{
 		new_value = successor(root->right);
