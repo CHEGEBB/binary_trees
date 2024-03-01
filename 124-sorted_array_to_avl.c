@@ -1,55 +1,40 @@
 #include "binary_trees.h"
-
 /**
- * sorted_array_to_avl_recursive - Recursively builds an AVL tree from an array
- * @array: Pointer to the first element of the array
- * @start: Starting index of the subarray
- * @end: Ending index of the subarray
- *
- * Return: Pointer to the root node of the created AVL tree, or NULL on failure
+ * aux_sort - create the tree using the half element of the array
+ * @parent: parent of the node to create
+ * @array: sorted array
+ * @begin: position where the array starts
+ * @last: position where the array ends
+ * Return: tree created
  */
-avl_t *sorted_array_to_avl_recursive(int *array, size_t start, size_t end)
+avl_t *aux_sort(avl_t *parent, int *array, int begin, int last)
 {
-    avl_t *node;
-    size_t mid;
+	avl_t *root;
+	binary_tree_t *aux;
+	int mid = 0;
 
-    /* Base case: if start index exceeds end index, return NULL */
-    if (start > end)
-        return (NULL);
-
-    /* Calculate mid index */
-    mid = (start + end) / 2;
-
-    /* Create a new AVL node with the value at the mid index */
-    node = avl_node(array[mid]);
-
-    /* Check if node creation failed */
-    if (node == NULL)
-        return (NULL);
-
-    /* Recursively build the left subtree with elements before mid */
-    node->left = sorted_array_to_avl_recursive(array, start, mid - 1);
-
-    /* Recursively build the right subtree with elements after mid */
-    node->right = sorted_array_to_avl_recursive(array, mid + 1, end);
-
-    /* Return the root of the AVL tree */
-    return (node);
+	if (begin <= last)
+	{
+		mid = (begin + last) / 2;
+		aux = binary_tree_node((binary_tree_t *)parent, array[mid]);
+		if (aux == NULL)
+			return (NULL);
+		root = (avl_t *)aux;
+		root->left = aux_sort(root, array, begin, mid - 1);
+		root->right = aux_sort(root, array, mid + 1, last);
+		return (root);
+	}
+	return (NULL);
 }
-
 /**
- * sorted_array_to_avl - Builds an AVL tree from an array
- * @array: Pointer to the first element of the array to be converted
- * @size: Number of elements in the array
- *
- * Return: Pointer to the root node of the created AVL tree, or NULL on failure
+ * sorted_array_to_avl - create a alv tree from sorted array
+ * @array: sorted array
+ * @size: size of the sorted array
+ * Return: alv tree form sorted array
  */
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
-    /* Check if the array is NULL or empty */
-    if (array == NULL || size == 0)
-        return (NULL);
-
-    /* Call the recursive function to build the AVL tree */
-    return (sorted_array_to_avl_recursive(array, 0, size - 1));
+	if (array == NULL || size == 0)
+		return (NULL);
+	return (aux_sort(NULL, array, 0, ((int)(size)) - 1));
 }
