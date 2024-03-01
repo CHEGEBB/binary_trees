@@ -12,12 +12,12 @@
  */
 size_t binary_tree_size(const binary_tree_t *tree)
 {
-    /* Check if the tree is NULL */
-    if (tree == NULL)
-        return (0);
+	/* Check if the tree is NULL */
+	if (tree == NULL)
+		return (0);
 
-    /* Recursively calculate the size of the left and right subtrees */
-    return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
+	/* Recursively calculate the size of the left and right subtrees */
+	return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
 }
 
 /**
@@ -33,17 +33,17 @@ size_t binary_tree_size(const binary_tree_t *tree)
  */
 int tree_is_complete(const binary_tree_t *tree, unsigned int i, unsigned int cnodes)
 {
-    /* Check if the tree is NULL */
-    if (tree == NULL)
-        return (1);
+	/* Check if the tree is NULL */
+	if (tree == NULL)
+		return (1);
 
-    /* Check if the current node index exceeds the total number of nodes */
-    if (i >= cnodes)
-        return (0);
+	/* Check if the current node index exceeds the total number of nodes */
+	if (i >= cnodes)
+		return (0);
 
-    /* Recursively check if the left and right subtrees are complete */
-    return (tree_is_complete(tree->left, 2 * i + 1, cnodes) &&
-            tree_is_complete(tree->right, 2 * i + 2, cnodes));
+	/* Recursively check if the left and right subtrees are complete */
+	return (tree_is_complete(tree->left, 2 * i + 1, cnodes) &&
+	        tree_is_complete(tree->right, 2 * i + 2, cnodes));
 }
 
 /**
@@ -56,15 +56,15 @@ int tree_is_complete(const binary_tree_t *tree, unsigned int i, unsigned int cno
  */
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
-    /* Variable to store the total number of nodes in the binary tree */
-    unsigned int total_nodes = binary_tree_size(tree);
+	/* Variable to store the total number of nodes in the binary tree */
+	unsigned int total_nodes = binary_tree_size(tree);
 
-    /* Check if the tree is NULL */
-    if (tree == NULL)
-        return (0);
+	/* Check if the tree is NULL */
+	if (tree == NULL)
+		return (0);
 
-    /* Call the tree_is_complete function to check if the binary tree is complete */
-    return (tree_is_complete(tree, 0, total_nodes));
+	/* Call the tree_is_complete function to check if the binary tree is complete */
+	return (tree_is_complete(tree, 0, total_nodes));
 }
 
 /**
@@ -76,16 +76,16 @@ int binary_tree_is_complete(const binary_tree_t *tree)
  */
 int check_parent(const binary_tree_t *tree)
 {
-    /* Check if the tree is NULL */
-    if (tree == NULL)
-        return (1);
+	/* Check if the tree is NULL */
+	if (tree == NULL)
+		return (1);
 
-    /* Check if the parent's value is greater than the node's value */
-    if (tree->parent != NULL && tree->n > tree->parent->n)
-        return (0);
+	/* Check if the parent's value is greater than the node's value */
+	if (tree->parent != NULL && tree->n > tree->parent->n)
+		return (0);
 
-    /* Recursively check the left and right subtrees */
-    return (check_parent(tree->left) && check_parent(tree->right));
+	/* Recursively check the left and right subtrees */
+	return (check_parent(tree->left) && check_parent(tree->right));
 }
 
 /**
@@ -98,10 +98,10 @@ int check_parent(const binary_tree_t *tree)
  */
 int binary_tree_is_heap(const binary_tree_t *tree)
 {
-    /* Check if the binary tree is complete */
-    if (!binary_tree_is_complete(tree))
-        return (0);
+	/* Check if the binary tree is complete */
+	if (!binary_tree_is_complete(tree))
+		return (0);
 
-    /* Check if each node's parent has a greater value than its children */
-    return (check_parent(tree->left) && check_parent(tree->right));
+	/* Check if each node's parent has a greater value than its children */
+	return (check_parent(tree->left) && check_parent(tree->right));
 }
