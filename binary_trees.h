@@ -92,6 +92,7 @@ avl_t *balance_left(avl_t *node);
 avl_t *balance_right(avl_t *node);
 char *convert(unsigned long int num, int base, int lowercase);
 bst_t *swap(bst_t *a, bst_t *b);
+create_avl_tree(avl_t *parent, int *array, int start, int end);
 size_t _binary_tree_height(const binary_tree_t *tree);
 
 

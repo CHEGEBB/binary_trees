@@ -3,37 +3,44 @@
 #include <stdio.h>
 
 /**
- * sorted_array_to_avl - builds an AVL tree from an array
- * @array: pointer to the first element of the array to be converted
- * @size: number of elements in the array
+ * create_avl_tree - Recursively creates an AVL tree from a sorted array.
+ * @parent: Parent node of the current subtree.
+ * @array: Pointer to the sorted array.
+ * @start: Starting index of the current subtree in the array.
+ * @end: Ending index of the current subtree in the array.
  *
- * Description:
- * This function builds an AVL tree from an array. The array is assumed to be
- * sorted in ascending order, and the tree is built using the AVL insertion
- * algorithm.
+ * Return: Pointer to the root of the created AVL tree.
+ */
+avl_t *create_avl_tree(avl_t *parent, int *array, int start, int end)
+{
+    if (start > end)
+        return NULL;
+
+    int mid = (start + end) / 2;
+
+    avl_t *root = malloc(sizeof(avl_t));
+    if (root == NULL)
+        return NULL;
+
+    root->n = array[mid];
+    root->parent = parent;
+    root->left = create_avl_tree(root, array, start, mid - 1);
+    root->right = create_avl_tree(root, array, mid + 1, end);
+
+    return root;
+}
+
+/**
+ * sorted_array_to_avl - Builds an AVL tree from a sorted array.
+ * @array: Pointer to the first element of the array to be converted.
+ * @size: Number of elements in the array.
  *
- * Return: pointer to the root node of the created AVL tree, or NULL on failure
+ * Return: Pointer to the root node of the created AVL tree, or NULL on failure.
  */
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
-	avl_t *tree = NULL;
-	size_t i;
+    if (array == NULL || size == 0)
+        return NULL;
 
-<<<<<<< HEAD
-	if (array == NULL || size == 0)
-		return (NULL);
-	for (i = 0; i < size; i++)
-		avl_insert(&tree, array[i]);
-=======
-	/* Check if the array is NULL or empty */
-	if (array == NULL || size == 0)
-		return (NULL);
-
-	/* Insert each element of the array into the AVL tree */
-	for (i = 0; i < size; i++)
-		avl_insert(&tree, array[i]);
-
-	/* Return the root of the AVL tree */
->>>>>>> 57259eae5901c1b79f27c9992f451230db466f27
-	return (tree);
+    return create_avl_tree(NULL, array, 0, (int)size - 1);
 }
