@@ -96,7 +96,6 @@ int remove_type(bst_t *root)
 	/* If the node has exactly one child */
 	else if ((!root->left && root->right) || (!root->right && root->left))
 	{
-		/* Replace the node with its child */
 		if (!root->left)
 		{
 			if (root->parent->right == root)
