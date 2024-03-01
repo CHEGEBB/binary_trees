@@ -26,8 +26,6 @@ bst_t *swap(bst_t *a, bst_t *b)
 	a->parent = b;
 	a->left = b->left;
 	a->right = b->right;
-
-	/* Update the parent of b's left child */
 	if (b->left)
 		b->left->parent = a;
 	if (b->right)
@@ -120,8 +118,8 @@ size_t binary_tree_size(const binary_tree_t *tree)
  * @node: Pointer to the node to be inserted.
  */
 
- 
- 
+
+
 void insert(heap_t **root, heap_t *node)
 {
 	/* Create a binary string representation of the heap size */
