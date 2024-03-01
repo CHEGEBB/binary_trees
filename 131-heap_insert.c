@@ -58,16 +58,16 @@ bst_t *swap(bst_t *a, bst_t *b)
 	return (b);
 }
 /**
- * convert - Converts a number from base 10 to another base 
- * This function takes an input number (num) in base 10 
- * generating a string representation of the converted number.
- * greater than 1. Additionally, if the lowercase flag is set to 1
- * represented in lowercase letters; otherwise, they will be uppercase.
- * @num: The input number to be converted.
- * @base: The base to convert the number to.
- * @lowercase: A flag indicating whether hexa values
- * Return: A pointer to the string representation of the converted number.
- */
+* convert - Converts a number from base 10 to another base 
+* This function takes an input number (num) in base 10 
+* generating a string representation of the converted number.
+* greater than 1. Additionally, if the lowercase flag is set to 1
+* represented in lowercase letters; otherwise, they will be uppercase.
+* @num: The input number to be converted.
+* @base: The base to convert the number to.
+* @lowercase: A flag indicating whether hexa values
+* Return: A pointer to the string representation of the converted number.
+*/
 char *convert(unsigned long int num, int base, int lowercase)
 {
 	static char *rep;
