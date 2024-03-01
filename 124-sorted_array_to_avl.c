@@ -1,8 +1,4 @@
-#include <stdlib.h>
 #include "binary_trees.h"
-#include <stdio.h>
-#include <stddef.h>
-
 /**
  * aux_sort - Recursively constructs an AVL tree from a sorted array.
  * @parent: Parent node of the current subtree being constructed.
