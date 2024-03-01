@@ -12,22 +12,20 @@
  * @size: The number of elements in the array.
  * Return: Pointer to the root node of the created Max Binary Heap, or NULL on failure.
  */
-
-
 heap_t *array_to_heap(int *array, size_t size)
 {
-    /* Local Declarations */
-    size_t i = 0;
-    heap_t *root = NULL;
+	/* Local Declarations */
+	size_t i = 0;
+	heap_t *root = NULL;
 
-    /* Main Execution */
-    if (!array)
-        return (NULL);
-    while (i < size)
-    {
-        /* Insert each element into the heap */
-        heap_insert(&root, array[i]);
-        i++;
-    }
-    return (root);
+	/* Main Execution */
+	if (!array)
+		return (NULL);
+	while (i < size)
+	{
+		/* Insert each element into the heap */
+		heap_insert(&root, array[i]);
+		i++;
+	}
+	return (root);
 }
